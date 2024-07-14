@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,29 +19,29 @@
             <div class="col-md-6 col-12 mx-auto">
                 <h3>Create a user</h3>
                 <hr>
-                <form>
+                <form:form method="post" action="/admin/user/create" modelAttribute="newUser">
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control">
+                        <form:input type="email" path="email" class="form-control"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control">
+                        <form:input type="password" path="password" class="form-control"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phone number</label>
-                        <input type="text" class="form-control">
+                        <form:input type="text" path="phone" class="form-control"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Full Name</label>
-                        <input type="text" class="form-control">
+                        <form:input type="text" path="fullName" class="form-control"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Address</label>
-                        <input type="text" class="form-control">
+                        <form:input type="text" path="address" class="form-control"/>
                     </div>
                     <button type="submit" class="btn btn-primary">Create</button>
-                  </form>
+                  </form:form>
             </div>
         </div>
     </div>
