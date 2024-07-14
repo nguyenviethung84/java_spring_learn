@@ -18,7 +18,7 @@ public class UserController {
     public String getHomePage(Model model){
         String test = this.userService.handleHello();
         model.addAttribute("hung", test);
-        model.addAttribute("haha", "from controller");
+        model.addAttribute("haha", "from controller with model");
         return "hello";
     }
 }
