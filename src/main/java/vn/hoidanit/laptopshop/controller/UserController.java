@@ -63,7 +63,7 @@ public class UserController {
         model.addAttribute("user", user);
         return "/admin/user/update";
     }
-    @PostMapping("path")
+    @PostMapping("/admin/user/update")
     public String postUpdateUser(Model model, @ModelAttribute("user") User user) {
         User currentUser = this.userService.getUserById(user.getId());
         if (currentUser != null) {

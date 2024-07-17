@@ -19,14 +19,14 @@
             <div class="col-md-6 col-12 mx-auto">
                 <h3>Create a user</h3>
                 <hr>
-                <form:form method="post" action="/admin/user/create" modelAttribute="user">
+                <form:form method="post" action="/admin/user/update" modelAttribute="user">
                     <div class="mb-3" style="display: none;">
                         <label class="form-label">Id</label>
                         <form:input type="text" path="id" class="form-control"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <form:input type="email" path="email" class="form-control"/>
+                        <form:input type="email" path="email" class="form-control" disabled="true"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phone number</label>
