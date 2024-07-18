@@ -1,0 +1,28 @@
+Users:
+id long
+email string
+password string
+fullName string
+address string
+phone string
+avatar string
+rolesId long
+
+
+Roles:
+id long
+name string
+description string
+
+
+Products:
+id long
+name string
+price double
+image string
+detailDesc string
+shortDesc string
+quantity long
+sold long
+factory string
+target string
