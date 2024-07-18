@@ -26,3 +26,13 @@ quantity long
 sold long
 factory string
 target string
+
+Orders:
+long id
+string userId
+double totalPrice
+
+Order_Product
+orderId long
+productId long
+quantity long
