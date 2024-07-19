@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Delete Users</title>
+        <title>Detail Users</title>
         <link href="/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -20,7 +19,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Delete Users</h1>
+                        <h1 class="mt-4">Detail Users</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                             <li class="breadcrumb-item active">Users</li>
@@ -29,20 +28,21 @@
                             <div class="row">
                                 <div class="col-12 mx-auto">
                                     <div class="d-flex justify-content-between">
-                                        <h3>Delete user with id = ${id}</h3>
+                                        <h3>User Detail</h3>
                                     </div>
                                     <hr>
-                    
-                                    <div class="alert alert-danger">
-                                        Ban muon xoa
-                                    </div>
-                                    <form:form action="/admin/user/delete" method="post" modelAttribute="user">
-                                        <div class="mb-3" style="display: none;">
-                                            <label class="form-label">Id</label>
-                                            <form:input type="text" path="id" class="form-control"/>
+                                    <div class="card" style="width: 60%;">
+                                        <div class="card-header">
+                                          User Information
                                         </div>
-                                        <button class="btn btn-danger">Confirm</button>
-                                    </form:form>
+                                        <ul class="list-group list-group-flush">
+                                          <li class="list-group-item">ID: ${user.id}</li>
+                                          <li class="list-group-item">Email: ${user.email}</li>
+                                          <li class="list-group-item">FullName: ${user.fullName}</li>
+                                          <li class="list-group-item">Address: ${user.address}</li>
+                                        </ul>
+                                    </div>
+                                    <a href="/admin/user" class="btn btn-success">Back</a>
                                 </div>
                             </div>
                         </div>
