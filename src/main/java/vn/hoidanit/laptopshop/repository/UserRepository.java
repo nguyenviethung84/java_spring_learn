@@ -8,11 +8,10 @@ import vn.hoidanit.laptopshop.domain.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    @SuppressWarnings({ "null", "unchecked" })
+    @SuppressWarnings({ "unchecked" })
     User save(User user);
     List<User> findByEmail(String email);
     List<User> findByEmailAndPhone(String email, String phone);
-    @SuppressWarnings("null")
     List<User> findAll();
     User findById(long id);
 }
