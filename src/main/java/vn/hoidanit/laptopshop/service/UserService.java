@@ -2,6 +2,7 @@ package vn.hoidanit.laptopshop.service;
 
 import vn.hoidanit.laptopshop.domain.Role;
 import vn.hoidanit.laptopshop.domain.User;
+import vn.hoidanit.laptopshop.domain.dto.RegisterDTO;
 
 import java.util.List;
 
@@ -19,26 +20,40 @@ public class UserService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
-    public String handleHello(){
+
+    public String handleHello() {
         return "Hello from service";
     }
-    public User handleSaveUser(User user){
+
+    public User handleSaveUser(User user) {
         return this.userRepository.save(user);
     }
-    public List<User> getAllUsers(){
+
+    public List<User> getAllUsers() {
         return this.userRepository.findAll();
     }
-    public List<User> getAllUsersByEmail(String email){
+
+    public List<User> getAllUsersByEmail(String email) {
         return this.userRepository.findByEmail(email);
     }
-    public User getUserById(long id){
+
+    public User getUserById(long id) {
         return this.userRepository.findById(id);
     }
-    public void deleteUser(User user){
+
+    public void deleteUser(User user) {
         this.userRepository.delete(user);
     }
 
-    public Role getRoleByName(String name){
+    public Role getRoleByName(String name) {
         return this.roleRepository.findByName(name);
+    }
+
+    public User registerDTOtoUser(RegisterDTO registerDTO) {
+        User user = new User();
+        user.setFullName(registerDTO.getFirstName() + " " + registerDTO.getLastName());
+        user.setEmail(registerDTO.getEmail());
+        user.setPassword(registerDTO.getPassword());
+        return user;
     }
 }
