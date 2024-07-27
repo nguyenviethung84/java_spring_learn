@@ -36,8 +36,6 @@ public class UserController {
     public String getHomePage(Model model) {
         List<User> arrUsers = this.userService.getAllUsers();
         System.out.println(arrUsers);
-        List<User> arrUsers2 = this.userService.getAllUsersByEmail("admin@admin.com");
-        System.out.println(arrUsers2);
         model.addAttribute("hung", "test");
         model.addAttribute("haha", "from controller with model");
         return "hello";
@@ -68,11 +66,10 @@ public class UserController {
     public String createUserPage(Model model,
             @ModelAttribute("newUser") @Valid User user,
             BindingResult bindingResult,
-            @RequestParam("hoidanitFile") MultipartFile file
-            ) {
+            @RequestParam("hoidanitFile") MultipartFile file) {
         List<FieldError> errors = bindingResult.getFieldErrors();
         for (FieldError error : errors) {
-            System.out.println( " >>>> " + error.getField() + " - " + error.getDefaultMessage());
+            System.out.println(" >>>> " + error.getField() + " - " + error.getDefaultMessage());
         }
         // validate
         if (bindingResult.hasErrors()) {

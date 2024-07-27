@@ -11,7 +11,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @SuppressWarnings({ "unchecked" })
     User save(User user);
 
-    List<User> findByEmail(String email);
+    User findByEmail(String email);
 
     List<User> findByEmailAndPhone(String email, String phone);
 
