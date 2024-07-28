@@ -22,6 +22,5 @@ public class ItemController {
         model.addAttribute("product", product);
         model.addAttribute("id", id);
         return "client/product/detail";
-        // return "client/homepage/show";
     }
 }
