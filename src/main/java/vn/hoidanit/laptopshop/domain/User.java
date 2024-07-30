@@ -28,11 +28,11 @@ public class User {
     private String email;
 
     @NotNull
-    @Min(value = 6, message = "Password phải có từ 6 ký tự")
+    // @Min(value = 6, message = "Password phải có từ 6 ký tự")
     private String password;
 
     @NotNull
-    @Min(value = 2, message = "FullName phải có từ 2 ký tự")
+    // @Min(value = 2, message = "FullName phải có từ 2 ký tự")
     private String fullName;
 
     private String address;
