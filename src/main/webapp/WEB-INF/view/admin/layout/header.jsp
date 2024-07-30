@@ -16,7 +16,7 @@
                 </div> -->
             </form>
             <div class="text-center navbar-brand ps-3">
-                <c:out value="${pageContext.request.userPrincipal.name}" />
+                <c:out value="${sessionScope.fullName}" />
             </div>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
