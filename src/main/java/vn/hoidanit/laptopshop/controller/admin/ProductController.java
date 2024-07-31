@@ -1,6 +1,7 @@
 package vn.hoidanit.laptopshop.controller.admin;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,8 +39,11 @@ public class ProductController {
 
     @RequestMapping("/admin/product/{id}")
     public String getProductDetailPage(Model model, @PathVariable long id) {
-        Product product = this.productService.getProductById(id);
-        model.addAttribute("product", product);
+        Optional<Product> productOptional = this.productService.getProductById(id);
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get();
+            model.addAttribute("product", product);
+        }
         return "/admin/product/detail";
     }
 
@@ -71,8 +75,11 @@ public class ProductController {
 
     @RequestMapping("/admin/product/update/{id}")
     public String getUpdateProductPage(Model model, @PathVariable long id) {
-        Product product = this.productService.getProductById(id);
-        model.addAttribute("newProduct", product);
+        Optional<Product> productOptional = this.productService.getProductById(id);
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get();
+            model.addAttribute("newProduct", product);
+        }
         return "/admin/product/update";
     }
 
@@ -85,31 +92,38 @@ public class ProductController {
         if (newProductBindingResult.hasErrors()) {
             return "admin/product/update";
         }
-        Product currentProduct = this.productService.getProductById(product.getId());
-        if (currentProduct != null) {
-            // update new image
-            if (!file.isEmpty()) {
-                String img = this.uploadService.handleSaveUploadFile(file, "product");
-                currentProduct.setImage(img);
+        Optional<Product> productOptional = this.productService.getProductById(product.getId());
+        if (productOptional.isPresent()) {
+            Product currentProduct = productOptional.get();
+            if (currentProduct != null) {
+                // update new image
+                if (!file.isEmpty()) {
+                    String img = this.uploadService.handleSaveUploadFile(file, "product");
+                    currentProduct.setImage(img);
+                }
+
+                currentProduct.setName(product.getName());
+                currentProduct.setPrice(product.getPrice());
+                currentProduct.setQuantity(product.getQuantity());
+                currentProduct.setDetailDesc(product.getDetailDesc());
+                currentProduct.setShortDesc(product.getShortDesc());
+                currentProduct.setFactory(product.getFactory());
+                currentProduct.setTarget(product.getTarget());
+
+                this.productService.handleSaveProduct(currentProduct);
             }
-
-            currentProduct.setName(product.getName());
-            currentProduct.setPrice(product.getPrice());
-            currentProduct.setQuantity(product.getQuantity());
-            currentProduct.setDetailDesc(product.getDetailDesc());
-            currentProduct.setShortDesc(product.getShortDesc());
-            currentProduct.setFactory(product.getFactory());
-            currentProduct.setTarget(product.getTarget());
-
-            this.productService.handleSaveProduct(currentProduct);
         }
+
         return "redirect:/admin/product";
     }
 
     @GetMapping("/admin/product/delete/{id}")
     public String getDeleteProductPage(Model model, @PathVariable long id) {
-        Product product = this.productService.getProductById(id);
-        model.addAttribute("product", product);
+        Optional<Product> productOptional = this.productService.getProductById(id);
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get();
+            model.addAttribute("product", product);
+        }
         return "/admin/product/delete";
     }
 

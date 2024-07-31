@@ -1,7 +1,6 @@
 package vn.hoidanit.laptopshop.domain.dto;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import vn.hoidanit.laptopshop.service.validator.RegisterChecked;
 
 @RegisterChecked
