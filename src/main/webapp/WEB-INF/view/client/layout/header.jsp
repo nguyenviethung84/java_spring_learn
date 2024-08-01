@@ -5,7 +5,7 @@
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
                     <a href="/" class="navbar-brand">
-                        <h1 class="text-primary display-6">Fruitables</h1>
+                        <h1 class="text-primary display-6">Hung</h1>
                     </a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarCollapse">
@@ -14,11 +14,11 @@
                     <div class="collapse navbar-collapse bg-white justify-content-between mx-5" id="navbarCollapse">
                         <div class="navbar-nav">
                             <a href="/" class="nav-item nav-link active">Trang chủ</a>
-                            <a href="/product" class="nav-item nav-link">Sản phẩm</a>
+                            <a href="/products" class="nav-item nav-link">Sản phẩm</a>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <c:if test="${not empty pageContext.request.userPrincipal}">
-                                <a href="#" class="position-relative me-4 my-auto">
+                                <a href="cart" class="position-relative me-4 my-auto">
                                     <i class="fa fa-shopping-bag fa-2x"></i>
                                     <span
                                         class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
