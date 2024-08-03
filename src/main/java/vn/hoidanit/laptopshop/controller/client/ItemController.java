@@ -142,8 +142,13 @@ public class ItemController {
     }
 
     @GetMapping("/products")
-    public String getProductPage(Model model, @RequestParam("page") Optional<String> pageOptional,
-            @RequestParam("name") Optional<String> nameOptional) {
+    public String getProductPage(Model model,
+            @RequestParam("page") Optional<String> pageOptional,
+            @RequestParam("name") Optional<String> nameOptional,
+            @RequestParam("min-price") Optional<String> minOptional,
+            @RequestParam("max-price") Optional<String> maxOptional,
+            @RequestParam("factory") Optional<String> factoryOptional,
+            @RequestParam("price") Optional<String> priceOptional) {
         int page = 1;
         try {
             if (pageOptional.isPresent()) {
@@ -157,9 +162,44 @@ public class ItemController {
             // TODO: handle exception
         }
 
-        Pageable pageable = PageRequest.of(page - 1, 6);
+        Pageable pageable = PageRequest.of(page - 1, 60);
         String name = nameOptional.isPresent() ? nameOptional.get() : "";
-        Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, name);
+        Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
+                name);
+
+        // // case 1: Lấy ra tất cả sản phẩm có giá cả tối thiểu là 1000 (vnd)
+        // double min = minOptional.isPresent() ? Double.parseDouble(minOptional.get())
+        // : 0;
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, min);
+
+        // case 2: Lấy ra tất cả sản phẩm có giá cả tối đa là 100000 (vnd)
+        // double max = maxOptional.isPresent() ? Double.parseDouble(maxOptional.get())
+        // : 0;
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, max);
+
+        // case 3: Lấy ra tất cả sản phẩm có hãng sản xuất = APPLE
+        // String factory = factoryOptional.isPresent() ? factoryOptional.get() : "";
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
+        // factory);
+
+        // case 4: Lấy ra tất cả sản phẩm có hãng sản xuất = APPLE hoặc DELL . Truyền
+        // nhiều điều kiện, ngăn cách các giá trị bởi dấu phẩy (điều kiện IN)
+        // List<String> factory = Arrays.asList(factoryOptional.get().split(","));
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
+        // factory);
+
+        // case 5: Lấy ra tất cả sản phẩm theo range (khoảng giá). 10 triệu <= price <=
+        // 15 triệu
+        // String price = priceOptional.isPresent() ? priceOptional.get() : "";
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
+        // price);
+
+        // case 6: Lấy ra tất cả sản phẩm theo range (khoảng giá). 10 triệu <= price <=
+        // 15 triệu và 16 triệu <= price <= 20 triệu
+        // List<String> price = Arrays.asList(priceOptional.get().split(","));
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable,
+        // price);
+
         List<Product> products = prs.getContent();
 
         model.addAttribute("products", products);
