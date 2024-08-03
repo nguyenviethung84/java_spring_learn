@@ -60,6 +60,8 @@ public class UserController {
         Page<User> uss = this.userService.getAllUsers(pageable);
         List<User> users = uss.getContent();
         model.addAttribute("users", users);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", uss.getTotalPages());
         return "admin/user/show";
     }
 
