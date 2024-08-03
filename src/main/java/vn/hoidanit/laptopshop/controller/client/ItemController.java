@@ -160,7 +160,7 @@ public class ItemController {
         String name = nameOptional.get();
 
         Pageable pageable = PageRequest.of(page - 1, 6);
-        Page<Product> prs = this.productService.fetchProducts(pageable, name);
+        Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, name);
         List<Product> products = prs.getContent();
 
         model.addAttribute("products", products);

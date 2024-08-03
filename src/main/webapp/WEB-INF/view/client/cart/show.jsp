@@ -159,7 +159,7 @@
                                             <fmt:formatNumber type="number" value="${totalPrice}" /> đ
                                         </p>
                                     </div>
-                                    <form:form action="/confirm-checkout" method="post" modelAttribute="cart">
+                                    <form:form action="/checkout" method="get" modelAttribute="cart">
                                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                         <div style="display: none;">
                                             <c:forEach var="cartDetail" items="${cart.cartDetails}" varStatus="status">
@@ -179,10 +179,10 @@
                                                 </div>
                                             </c:forEach>
                                         </div>
-                                        <button
-                                            class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">Xác
-                                            nhận thanh toán
-                                        </button>
+                                        <submit
+                                            class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">
+                                            Xác nhận thanh toán
+                                        </submit>
                                     </form:form>
                                 </div>
                             </div>
