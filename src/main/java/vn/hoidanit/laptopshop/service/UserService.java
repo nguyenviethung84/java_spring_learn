@@ -6,6 +6,8 @@ import vn.hoidanit.laptopshop.domain.dto.RegisterDTO;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vn.hoidanit.laptopshop.repository.OrderRepository;
@@ -37,8 +39,8 @@ public class UserService {
         return this.userRepository.save(user);
     }
 
-    public List<User> getAllUsers() {
-        return this.userRepository.findAll();
+    public Page<User> getAllUsers(Pageable pageable) {
+        return this.userRepository.findAll(pageable);
     }
 
     public User getUserById(long id) {
