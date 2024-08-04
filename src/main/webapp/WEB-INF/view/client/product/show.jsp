@@ -159,7 +159,7 @@
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-5"
-                                                        value="tren-20-triệu">
+                                                        value="tren-20-trieu">
                                                     <label class="form-check-label" for="price-5">Trên 20 triệu</label>
                                                 </div>
                                             </div>
@@ -196,6 +196,9 @@
                                     </div>
                                     <div class="col-12 col-md-8 text-center">
                                         <div class="row g-4">
+                                            <c:if test="${totalPages == 0}">
+                                                <div>Không tìm thấy sản phẩm</div>
+                                            </c:if>
                                             <c:forEach var="product" items="${products}">
                                                 <div class="col-md-6 col-lg-4">
                                                     <div class="rounded position-relative fruite-item">

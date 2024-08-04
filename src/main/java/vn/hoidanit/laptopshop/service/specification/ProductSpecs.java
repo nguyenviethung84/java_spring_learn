@@ -44,4 +44,12 @@ public class ProductSpecs {
         return (root, query, criteriaBuilder) -> criteriaBuilder.between(
                 root.get(Product_.PRICE), min, max);
     }
+
+    public static Specification<Product> matchTarget(String factory) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Product_.TARGET), factory);
+    }
+
+    public static Specification<Product> matchListTarget(List<String> factory) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.in(root.get(Product_.TARGET)).value(factory);
+    }
 }
