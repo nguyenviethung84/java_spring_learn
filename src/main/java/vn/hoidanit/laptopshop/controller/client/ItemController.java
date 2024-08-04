@@ -158,7 +158,7 @@ public class ItemController {
             // TODO: handle exception
         }
 
-        Pageable pageable = null;
+        Pageable pageable = PageRequest.of(page - 1, 3);
         // check sort price
         if (productCriteriaDTO.getSort() != null && productCriteriaDTO.getSort().isPresent()) {
             String sort = productCriteriaDTO.getSort().get();
@@ -166,8 +166,6 @@ public class ItemController {
                 pageable = PageRequest.of(page - 1, 3, Sort.by(Product_.PRICE).ascending());
             } else if (sort.equals("gia-giam-dan")) {
                 pageable = PageRequest.of(page - 1, 3, Sort.by(Product_.PRICE).descending());
-            } else {
-                pageable = PageRequest.of(page - 1, 3);
             }
         }
 
